@@ -4,139 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMB Quiz Game: The Startup Evolution</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Premium Ambient Background -->
-    <div class="ambient-background">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-    </div>
+<div class="particles" id="particles"></div>
 
-    <!-- Floating Glass Icons -->
-    <div class="bg-icons">
-        <div class="bg-icon">💡</div>
-        <div class="bg-icon">📈</div>
-        <div class="bg-icon">💼</div>
-        <div class="bg-icon">🤝</div>
-        <div class="bg-icon">🚀</div>
-        <div class="bg-icon">🤔</div>
-    </div>
+<div id="app">
+    <div class="card">
+        <div class="card-bar"></div>
 
-    <div class="app-container">
-        
         <!-- Start Screen -->
         <section id="start-screen" class="screen active">
-            <div class="logo-container">
-                <span class="main-icon pulse">🚀</span>
-                <h1>IMB <br> <span class="highlight">Startup Game</span></h1>
+            <div class="intro-icon">🚀</div>
+            <div class="brand-chip">📚 International Business Management</div>
+            <h1 class="intro-title">IMB <span>Startup Game</span></h1>
+            <p class="intro-sub">Master globalization, culture & international business testing your ultimate knowledge.</p>
+            <div class="evo-row" id="intro-evo">
+                <span class="evo-dot active">🪫</span><span class="evo-sep"></span>
+                <span class="evo-dot">⚙️</span><span class="evo-sep"></span>
+                <span class="evo-dot">🔧</span><span class="evo-sep"></span>
+                <span class="evo-dot">🚀</span><span class="evo-sep"></span>
+                <span class="evo-dot">🌍</span>
             </div>
-            <p class="subtitle">Test your business knowledge and evolve from an Idea to Global Scale!</p>
-            <button id="start-btn" class="primary-btn pulse-hover">Launch Game</button>
+            <button id="start-btn" class="btn btn-primary">Launch Game &nbsp;→</button>
         </section>
 
         <!-- Menu Screen -->
         <section id="menu-screen" class="screen">
-            <h2>Select Your Stage</h2>
-            <div class="level-cards">
-                <button class="level-btn" data-section="section1">
-                    <span class="level-icon">⚙️</span>
-                    <span class="level-title">Section 1</span>
-                    <span class="level-desc">Global Business Foundation • 34 Questions</span>
-                </button>
-                <button class="level-btn" data-section="section2">
-                    <span class="level-icon">🔧</span>
-                    <span class="level-title">Section 2</span>
-                    <span class="level-desc">Cultural Environment • 33 Questions</span>
-                </button>
-                <button class="level-btn locked" disabled>
-                    <span class="level-icon">🌍</span>
-                    <span class="level-title">Section 3</span>
-                    <span class="level-desc">Coming Soon</span>
-                </button>
+            <div class="section-title">Choose Your Stage</div>
+            <div class="section-sub">Select your path to global scale</div>
+            <div class="level-grid">
+                <div class="level-card level-btn" data-section="section1">
+                    <div class="level-emoji">⚙️</div>
+                    <div class="level-text">
+                        <h3>Section 1 — Global Foundation</h3>
+                        <p>22 MCQ, 12 True/False · Trade & institutions</p>
+                    </div>
+                    <div class="level-badge badge-blue">34 Qs</div>
+                </div>
+                <div class="level-card level-btn" data-section="section2">
+                    <div class="level-emoji">🔧</div>
+                    <div class="level-text">
+                        <h3>Section 2 — Cultural Environment</h3>
+                        <p>23 MCQ, 10 True/False · Culture & structure</p>
+                    </div>
+                    <div class="level-badge badge-blue">33 Qs</div>
+                </div>
+                <div class="level-card locked" style="opacity:0.5; cursor:not-allowed;">
+                    <div class="level-emoji">🌍</div>
+                    <div class="level-text">
+                        <h3>Section 3 — Worldwide Scale</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                    <div class="level-badge badge-orange">Locked</div>
+                </div>
             </div>
-            <button class="secondary-btn go-home-btn">🏠 Back Home</button>
+            <div style="margin-top:0.75rem;">
+                <button class="btn btn-ghost btn-sm go-home-btn">🏠 Back Home</button>
+            </div>
+            <div class="credit">Made by AF</div>
         </section>
 
         <!-- Transition Screen -->
-        <section id="transition-screen" class="screen">
-            <h2 id="transition-quote" class="quote">"Great ideas mean nothing without execution!"</h2>
-            <p class="ready-text">Get Ready...</p>
+        <section id="transition-screen" class="screen" style="justify-content:center;">
+            <div class="trans-card">
+                <div class="trans-emoji" id="trans-emoji">⚙️</div>
+                <div class="section-title" id="trans-title" style="margin-bottom:0.3rem;">Ready!</div>
+                <div class="section-sub" id="trans-section" style="margin-bottom:0;"></div>
+                <div class="quote-line" id="transition-quote"></div>
+            </div>
+            <div style="margin-top:1.5rem;">
+                <p style="color:var(--text3); font-size:12px; text-transform:uppercase; letter-spacing:1px; font-weight:700; animation:pulse 1s infinite alternate;">Loading Module...</p>
+            </div>
+            <div class="credit">Made by AF</div>
         </section>
 
         <!-- Quiz Screen -->
-        <section id="quiz-screen" class="screen">
-            <header class="quiz-header">
-                <button class="nav-btn go-home-btn">🏠 <span class="nav-btn-text">Home</span></button>
-                <div class="progress-container">
-                    <div class="progress-emojis">
-                        <span class="emoji-step active">🪫</span>
-                        <span class="emoji-step">⚙️</span>
-                        <span class="emoji-step">🔧</span>
-                        <span class="emoji-step">🚀</span>
-                        <span class="emoji-step">🌍</span>
+        <section id="quiz-screen" class="screen" style="justify-content:flex-start;padding-top:1.2rem;">
+            <button class="btn btn-ghost btn-sm home-pill go-home-btn">🏠 Home</button>
+
+            <div class="quiz-topbar" style="margin-top:0.3rem;">
+                <span class="q-chip chip-count" id="q-counter">Q 1 / ?</span>
+                <span class="q-chip chip-score" id="score-tag">Score: <span id="current-score">0</span></span>
+                <span class="q-chip chip-mcq" id="q-type-tag">MCQ</span>
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-rail">
+                    <div class="progress-fill" id="progress-bar-fill" style="width:0%"></div>
+                </div>
+                <div class="progress-meta">
+                    <span class="progress-pct" id="prog-label">0% complete</span>
+                    <div class="mini-evo" id="quiz-evo">
+                        <span class="evo-dot emoji-step active">🪫</span>
+                        <span class="evo-dot emoji-step">⚙️</span>
+                        <span class="evo-dot emoji-step">🔧</span>
+                        <span class="evo-dot emoji-step">🚀</span>
+                        <span class="evo-dot emoji-step">🌍</span>
                     </div>
-                    <div class="progress-bar-bg">
-                        <div id="progress-bar-fill"></div>
-                    </div>
                 </div>
-                <div class="score-display">Score: <span id="current-score">0</span></div>
-            </header>
-            
-            <main class="quiz-body">
-                <div id="visual-feedback" class="hidden">✅</div>
-                <h3 id="question-text">Question text goes here?</h3>
-                <div id="options-container" class="options-grid">
-                    <!-- Options populated by JS -->
-                </div>
-                <!-- Quiz Bottom Nav -->
-                <div class="quiz-bottom-nav">
-                    <button id="prev-btn" class="secondary-btn hidden">⏮ Previous</button>
-                </div>
-                <div id="tip-container" class="hidden">
-                    <p id="tip-text"></p>
-                    <button id="next-btn" class="primary-btn pulse">Next Strategy ➡️</button>
-                </div>
-            </main>
+            </div>
+
+            <div class="q-card">
+                <div class="q-number" id="q-number">Question 1</div>
+                <div class="q-text" id="question-text">Loading...</div>
+                <div class="options-list" id="options-container"></div>
+            </div>
+
+            <div class="feedback" id="feedback-box">
+                <div id="visual-feedback" class="hidden"></div>
+                <div id="tip-text"></div>
+            </div>
+
+            <div class="nav-row">
+                <button class="btn btn-ghost btn-sm" id="prev-btn" style="display:none;">← Previous</button>
+                <div style="flex:1"></div>
+                <button class="btn btn-primary btn-sm" id="next-btn" style="display:none;">Next Strategy →</button>
+            </div>
+
+            <div class="credit" style="margin-top:1rem;">Made by AF</div>
         </section>
 
         <!-- Result Screen -->
-        <section id="result-screen" class="screen">
-            <div id="confetti-container"></div>
-            
-            <div class="result-header">
-                <div class="score-circle pop-in">
-                    <span class="score-icon">🚀</span>
+        <section id="result-screen" class="screen" style="justify-content:flex-start;padding-top:1.5rem;">
+            <div class="confetti-wrap" id="confetti-container"></div>
+
+            <div class="results-header">
+                <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:0.75rem;">Startup Scaled!</div>
+                <div class="score-ring-wrap">
+                    <svg class="score-svg" width="100" height="100" viewBox="0 0 100 100">
+                        <circle class="score-track" cx="50" cy="50" r="40"/>
+                        <circle class="score-fill" id="score-fill-arc" cx="50" cy="50" r="40"
+                            stroke="url(#arcGrad)"
+                            stroke-dasharray="251.2"
+                            stroke-dashoffset="251.2"/>
+                        <defs>
+                            <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#f97316"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="score-label-wrap">
+                        <div class="score-num" id="final-score-num"><span id="final-score">0</span>/<span id="total-questions">0</span></div>
+                        <div class="score-sub" id="final-pct">0%</div>
+                    </div>
                 </div>
-                <h2 class="result-title">Startup Scaled!</h2>
-                <p class="final-score-text">You scored <span class="score-highlight" id="final-score">0</span> out of <span id="total-questions">0</span></p>
-            </div>
-            
-            <div id="wrong-answers-section" class="hidden">
-                <h3 class="feedback-subtitle">Review Your Pivots</h3>
-                <div id="wrong-answers-list">
-                    <!-- Populated by JS -->
-                </div>
+                <div style="font-size:14px;color:var(--text2);line-height:1.5;" id="final-msg">Output Text...</div>
             </div>
 
-            <div class="result-actions">
-                <button id="replay-btn" class="primary-btn pulse">🔄 Play Again</button>
-                <div class="secondary-actions">
-                    <button class="nav-btn go-home-btn">🏠 Home</button>
-                    <button id="share-btn" class="nav-btn">📱 Share Score</button>
-                </div>
+            <div class="badge-strip">
+                <div class="badge-icons">🏅 🚀 📊</div>
+                <div class="badge-title">Future Entrepreneur</div>
+                <div class="badge-sub">IMB Foundation — Completed</div>
             </div>
+
+            <div class="evo-row" style="margin-bottom:0.75rem;">
+                <span class="evo-dot done" style="font-size:16px;opacity:.5">🪫</span><span class="evo-sep"></span>
+                <span class="evo-dot done" style="font-size:16px;opacity:.5">⚙️</span><span class="evo-sep"></span>
+                <span class="evo-dot done" style="font-size:16px;opacity:.5">🔧</span><span class="evo-sep"></span>
+                <span class="evo-dot done" style="font-size:16px;opacity:.5">🚀</span><span class="evo-sep"></span>
+                <span class="evo-dot active" id="final-evo" style="font-size:24px;">🌍</span>
+            </div>
+
+            <div class="review-section" id="wrong-answers-section" style="display:none;">
+                <div class="divider"></div>
+                <div class="review-header">
+                    <span>❌ Review Pivots</span>
+                    <span class="review-count" id="review-count">0 wrong</span>
+                </div>
+                <div class="results-scroll" id="wrong-answers-list"></div>
+            </div>
+
+            <div class="divider"></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:0.5rem;">
+                <button class="btn btn-primary btn-sm" id="replay-btn">↩ Play Again</button>
+                <button class="btn btn-ghost btn-sm go-home-btn">🏠 Home</button>
+                <button class="btn btn-orange btn-sm" id="share-btn">Share Score 📤</button>
+            </div>
+
+            <div class="credit">Made by AF</div>
         </section>
 
-        <footer>
-            <p>Made by AF</p>
-        </footer>
     </div>
+</div>
 
-    <script src="questions.js"></script>
-    <script src="script.js"></script>
+<script src="questions.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
