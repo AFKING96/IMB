@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMB Quiz Game: The Startup Evolution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Premium Ambient Background -->
+    <div class="ambient-background">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Floating Glass Icons -->
+    <div class="bg-icons">
+        <div class="bg-icon">💡</div>
+        <div class="bg-icon">📈</div>
+        <div class="bg-icon">💼</div>
+        <div class="bg-icon">🤝</div>
+        <div class="bg-icon">🚀</div>
+        <div class="bg-icon">🤔</div>
+    </div>
+
+    <div class="app-container">
+        
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="logo-container">
+                <span class="main-icon pulse">🚀</span>
+                <h1>IMB <br> <span class="highlight">Startup Game</span></h1>
+            </div>
+            <p class="subtitle">Test your business knowledge and evolve from an Idea to Global Scale!</p>
+            <button id="start-btn" class="primary-btn pulse-hover">Launch Game</button>
+        </section>
+
+        <!-- Menu Screen -->
+        <section id="menu-screen" class="screen">
+            <h2>Select Your Stage</h2>
+            <div class="level-cards">
+                <button class="level-btn" data-section="section1">
+                    <span class="level-icon">⚙️</span>
+                    <span class="level-title">Section 1</span>
+                    <span class="level-desc">Global Business Foundation • 34 Questions</span>
+                </button>
+                <button class="level-btn" data-section="section2">
+                    <span class="level-icon">🔧</span>
+                    <span class="level-title">Section 2</span>
+                    <span class="level-desc">Cultural Environment • 33 Questions</span>
+                </button>
+                <button class="level-btn locked" disabled>
+                    <span class="level-icon">🌍</span>
+                    <span class="level-title">Section 3</span>
+                    <span class="level-desc">Coming Soon</span>
+                </button>
+            </div>
+            <button class="secondary-btn go-home-btn">🏠 Back Home</button>
+        </section>
+
+        <!-- Transition Screen -->
+        <section id="transition-screen" class="screen">
+            <h2 id="transition-quote" class="quote">"Great ideas mean nothing without execution!"</h2>
+            <p class="ready-text">Get Ready...</p>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <header class="quiz-header">
+                <button class="nav-btn go-home-btn">🏠 <span class="nav-btn-text">Home</span></button>
+                <div class="progress-container">
+                    <div class="progress-emojis">
+                        <span class="emoji-step active">🪫</span>
+                        <span class="emoji-step">⚙️</span>
+                        <span class="emoji-step">🔧</span>
+                        <span class="emoji-step">🚀</span>
+                        <span class="emoji-step">🌍</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="progress-bar-fill"></div>
+                    </div>
+                </div>
+                <div class="score-display">Score: <span id="current-score">0</span></div>
+            </header>
+            
+            <main class="quiz-body">
+                <div id="visual-feedback" class="hidden">✅</div>
+                <h3 id="question-text">Question text goes here?</h3>
+                <div id="options-container" class="options-grid">
+                    <!-- Options populated by JS -->
+                </div>
+                <!-- Quiz Bottom Nav -->
+                <div class="quiz-bottom-nav">
+                    <button id="prev-btn" class="secondary-btn hidden">⏮ Previous</button>
+                </div>
+                <div id="tip-container" class="hidden">
+                    <p id="tip-text"></p>
+                    <button id="next-btn" class="primary-btn pulse">Next Strategy ➡️</button>
+                </div>
+            </main>
+        </section>
+
+        <!-- Result Screen -->
+        <section id="result-screen" class="screen">
+            <div id="confetti-container"></div>
+            
+            <div class="result-header">
+                <div class="score-circle pop-in">
+                    <span class="score-icon">🚀</span>
+                </div>
+                <h2 class="result-title">Startup Scaled!</h2>
+                <p class="final-score-text">You scored <span class="score-highlight" id="final-score">0</span> out of <span id="total-questions">0</span></p>
+            </div>
+            
+            <div id="wrong-answers-section" class="hidden">
+                <h3 class="feedback-subtitle">Review Your Pivots</h3>
+                <div id="wrong-answers-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button id="replay-btn" class="primary-btn pulse">🔄 Play Again</button>
+                <div class="secondary-actions">
+                    <button class="nav-btn go-home-btn">🏠 Home</button>
+                    <button id="share-btn" class="nav-btn">📱 Share Score</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Made by AF</p>
+        </footer>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
